@@ -2,6 +2,10 @@
 
 Official Node.js SDK for interacting with the x402 AI Frens API. This SDK enables you to chat with AI agents, generate images, videos, and memes using blockchain-based payments.
 
+
+https://github.com/user-attachments/assets/7c44ae04-c1f6-446a-8600-f0f80d9f8a86
+
+
 ## Features
 
 - 💬 **Chat with AI Agents** - Interact with AI agents in conversations
