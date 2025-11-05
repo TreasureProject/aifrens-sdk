@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    /* Modern syntax + wide runtime compatibility */
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    /* Better type safety & modern library support */
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+
+    /* Paths / aliases (optional) */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* Required for SDKs that export typings */
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "isolatedModules": true
+  },
+  "include": ["src", "examples"],
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

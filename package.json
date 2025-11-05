@@ -1,0 +1,57 @@
+{
+  "name": "@treasure_project/aifrens-sdk",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Official Node.js SDK for interacting with the x402 AI Frens API.",
+  "author": "Treasure Project",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TreasureProject/aifrens-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TreasureProject/aifrens-sdk/issues"
+  },
+  "homepage": "https://github.com/TreasureProject/aifrens-sdk#readme",
+  "keywords": [
+    "sdk",
+    "api",
+    "typescript",
+    "node",
+    "ai-frens",
+    "treasure",
+    "x402",
+    "x402-ai-frens",
+    "ai",
+    "agents",
+    "agent"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "example:chat": "node --loader ts-node/esm examples/chat.ts",
+    "example:image": "node --loader ts-node/esm examples/image.ts",
+    "example:video": "node --loader ts-node/esm examples/video.ts",
+    "example:meme": "node --loader ts-node/esm examples/meme.ts",
+    "start": "node dist/index.js",
+    "test": "echo \"No tests yet\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.7"
+  },
+  "dependencies": {
+    "viem": "^2.38.6",
+    "x402-fetch": "^0.7.0"
+  }
+}
