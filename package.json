@@ -1,6 +1,6 @@
 {
   "name": "@treasure_project/aifrens-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Official Node.js SDK for interacting with the x402 AI Frens API.",
   "author": "Treasure Project",
