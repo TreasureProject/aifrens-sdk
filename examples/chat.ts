@@ -14,6 +14,7 @@ async function main() {
     agentName: "0xdacd02dd0ce8a923ad26d4c49bb94ece09306c3e", //Wiz Token ID
     chatId: `${account.address}-0xdacd02dd0ce8a923ad26d4c49bb94ece09306c3e`,
     isGroupChat: false,
+    currency: 'MAGIC',
   };
   const response = await sdk.chat(input);
   console.log(response);

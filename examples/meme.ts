@@ -10,6 +10,7 @@ async function main() {
     prompt: "Riding a unicorn, shouting Mooooon",
     agentName: "0xdacd02dd0ce8a923ad26d4c49bb94ece09306c3e", //Wiz Token ID
     mode: "vanilla",
+    currency: 'MAGIC',
   };
   const response = await sdk.generateMeme(input);
   console.log(response);

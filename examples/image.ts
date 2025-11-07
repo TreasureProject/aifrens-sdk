@@ -11,6 +11,7 @@ async function main() {
     agentName: "0xdacd02dd0ce8a923ad26d4c49bb94ece09306c3e", //Wiz Token ID
     includeCharacter: true,
     mode: "vanilla",
+    currency: 'MAGIC',
   };
   const response = await sdk.generateImage(input);
   console.log(response);

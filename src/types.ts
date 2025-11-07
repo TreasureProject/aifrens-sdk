@@ -1,13 +1,19 @@
-export type RouteType = 'chat' | 'image' | 'video' | 'meme';
+export type RouteType = 'chat' | 'image' | 'video' | 'meme' | 'media';
 
 export interface Route {
   route: string;
   type: RouteType;
   price: string;
-  symbol: string;
+  prices: {
+    [tokenSymbol: string]: {
+      tokenAddress: string;
+      price: string;
+    };
+  };
 }
 
 export interface MetadataResponse {
+  tokenSymbols: Record<string, string>;
   routes: Route[];
 }
 
@@ -23,6 +29,7 @@ export interface ChatInput {
     agentName: string;
     chatId: string;
     isGroupChat: boolean;
+    currency: 'USDC' | 'MAGIC' | 'MIO' | 'SMOL';
 }
 
 export interface ChatResponse {
@@ -32,9 +39,10 @@ export interface ChatResponse {
 
 export interface GenerateImageInput {
   prompt: string;
-  agentName: string
+  agentName: string;
   includeCharacter: boolean;
   mode: 'vanilla' | 'spicy';
+  currency: 'USDC' | 'MAGIC' | 'MIO' | 'SMOL';
 }
 
 export interface GenerateImageResponse {
@@ -45,9 +53,10 @@ export interface GenerateImageResponse {
 
 export interface GenerateVideoInput {
   prompt: string;
-  agentName: string
+  agentName: string;
   includeCharacter: boolean;
   mode: 'vanilla' | 'spicy';
+  currency: 'USDC' | 'MAGIC' | 'MIO' | 'SMOL';
 }
 
 export interface GenerateVideoResponse {
@@ -60,6 +69,7 @@ export interface GenerateMemeInput {
   prompt: string;
   agentName: string;
   mode: 'vanilla' | 'spicy';
+  currency: 'USDC' | 'MAGIC' | 'MIO' | 'SMOL';
 }
 
 export interface GenerateMemeResponse {

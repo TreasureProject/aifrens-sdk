@@ -7,8 +7,8 @@ export type { MetadataResponse, Route, RouteType };
 
 export class AIFrensClient {
     private fetchWithPayment: ReturnType<typeof wrapFetchWithPayment>;
-    constructor(private account: Signer | MultiNetworkSigner, maxPaymentAmount: number = 1000000000) {
-        this.fetchWithPayment = wrapFetchWithPayment(fetch, this.account, BigInt(maxPaymentAmount.toString()));
+    constructor(private account: Signer | MultiNetworkSigner, maxPaymentAmount: string = '10000000000000000000000000000') {
+        this.fetchWithPayment = wrapFetchWithPayment(fetch, this.account, BigInt(maxPaymentAmount));
     }
   
     /**
