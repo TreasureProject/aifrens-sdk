@@ -6,9 +6,20 @@ import { wrapFetchWithPayment, decodeXPaymentResponse, MultiNetworkSigner, Signe
 export type { MetadataResponse, Route, RouteType };
 
 export class AIFrensClient {
-    private fetchWithPayment: ReturnType<typeof wrapFetchWithPayment>;
-    constructor(private account: Signer | MultiNetworkSigner, maxPaymentAmount: string = '10000000000000000000000000000') {
-        this.fetchWithPayment = wrapFetchWithPayment(fetch, this.account, BigInt(maxPaymentAmount));
+    private fetchWithPayment?: ReturnType<typeof wrapFetchWithPayment>;
+    private account?: Signer | MultiNetworkSigner;
+    private maxPaymentAmount: string = '10000000000000000000000000000';
+    constructor(account?: Signer | MultiNetworkSigner, maxPaymentAmount: string = '10000000000000000000000000000') {
+        this.account = account;
+        this.maxPaymentAmount = maxPaymentAmount;
+        if (this.account) {
+            this.fetchWithPayment = wrapFetchWithPayment(fetch, this.account, BigInt(maxPaymentAmount));
+        }
+    }
+
+    setSigner(account: Signer | MultiNetworkSigner) {
+        this.account = account;
+        this.fetchWithPayment = wrapFetchWithPayment(fetch, this.account, BigInt(this.maxPaymentAmount));
     }
   
     /**
@@ -17,6 +28,9 @@ export class AIFrensClient {
      * @returns Promise resolving to an object containing the payment response and the chat response (which may include an error or response string)
      */
     async chat(data: ChatInput) {
+        if (!this.fetchWithPayment) {
+            throw new Error('No account set');
+        }
         const response = await this.fetchWithPayment(`${API_URL}/chat`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -35,6 +49,9 @@ export class AIFrensClient {
      * @returns Promise resolving to an object containing the payment response and the image generation response (which may include success status, error, or generated image)
      */
     async generateImage(data: GenerateImageInput) {
+        if (!this.fetchWithPayment) {
+            throw new Error('No account set');
+        }
         const response = await this.fetchWithPayment(`${API_URL}/generate-media-image`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -53,6 +70,9 @@ export class AIFrensClient {
      * @returns Promise resolving to an object containing the payment response and the video generation response (which may include success status, error, or generated video)
      */
     async generateVideo(data: GenerateVideoInput) {
+        if (!this.fetchWithPayment) {
+            throw new Error('No account set');
+        }
         const response = await this.fetchWithPayment(`${API_URL}/generate-media-video`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -71,6 +91,9 @@ export class AIFrensClient {
      * @returns Promise resolving to an object containing the payment response and the meme generation response (which may include success status, error, or generated meme)
      */
     async generateMeme(data: GenerateMemeInput) {
+        if (!this.fetchWithPayment) {
+            throw new Error('No account set');
+        }
         const response = await this.fetchWithPayment(`${API_URL}/generate-media-meme`, {
             method: 'POST',
             body: JSON.stringify(data),
