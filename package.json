@@ -41,6 +41,7 @@
     "example:image": "node --loader ts-node/esm examples/image.ts",
     "example:video": "node --loader ts-node/esm examples/video.ts",
     "example:meme": "node --loader ts-node/esm examples/meme.ts",
+    "example:data": "node --loader ts-node/esm examples/data.ts",
     "start": "node dist/index.js",
     "test": "echo \"No tests yet\""
   },

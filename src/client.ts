@@ -1,4 +1,4 @@
-import { ChatInput, ChatResponse, GenerateImageInput, GenerateImageResponse, GenerateMemeInput, GenerateMemeResponse, GenerateVideoInput, GenerateVideoResponse, MetadataResponse, Route, RouteType } from './types.js';
+import { AgentDataResponse, ChatInput, ChatResponse, GenerateImageInput, GenerateImageResponse, GenerateMemeInput, GenerateMemeResponse, GenerateVideoInput, GenerateVideoResponse, MetadataResponse, Route, RouteType } from './types.js';
 import { API_URL } from './constants.js';
 import { wrapFetchWithPayment, decodeXPaymentResponse, MultiNetworkSigner, Signer } from "x402-fetch";
 
@@ -94,6 +94,20 @@ export class AIFrensClient {
         }
         
         const data = await response.json() as MetadataResponse;
+        return data;
+    }
+
+    /**
+     * Fetches data about a specific agent/character from the AI Frens API
+     * @param agentName - The name/ID of the agent/character to fetch data for
+     * @returns Promise resolving to the agent data response containing name, description, and image
+     */
+    async getAgentData(agentName: string) {
+        const response = await fetch(`${API_URL}/info?characterid=${agentName}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch agent data: ${response.statusText}`);
+        }
+        const data = await response.json() as AgentDataResponse;
         return data;
     }
 }

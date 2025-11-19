@@ -12,6 +12,7 @@ https://github.com/user-attachments/assets/7c44ae04-c1f6-446a-8600-f0f80d9f8a86
 - 🎨 **Generate Images** - Create images with AI, optionally including character features
 - 🎬 **Generate Videos** - Create videos with AI-powered generation
 - 😂 **Generate Memes** - Create memes with AI assistance
+- 📊 **Get Agent Data** - Fetch information about specific agents/characters
 - 🔒 **Blockchain Payments** - Built-in payment handling via x402 protocol
 - 📦 **TypeScript Support** - Fully typed for better developer experience
 - 🌐 **Multi-format** - Supports both ESM and CommonJS
@@ -56,6 +57,7 @@ npm run example:chat
 npm run example:image
 npm run example:video
 npm run example:meme
+npm run example:data
 ```
 
 **Note:** Make sure to update the mnemonic phrase in the example files before running them.
@@ -74,6 +76,7 @@ import type {
   GenerateVideoResponse,
   GenerateMemeInput,
   GenerateMemeResponse,
+  AgentDataResponse,
   MetadataResponse,
   Route,
   RouteType
@@ -82,7 +85,7 @@ import type {
 
 ## Payment Handling
 
-The SDK uses the x402 protocol for payment processing. All API calls (except `getMetadata()`) automatically handle payment through the blockchain. The payment response is included in every method's return value, allowing you to track transaction details.
+The SDK uses the x402 protocol for payment processing. All API calls (except `getMetadata()` and `getAgentData()`) automatically handle payment through the blockchain. The payment response is included in every paid method's return value, allowing you to track transaction details.
 
 ## Error Handling
 

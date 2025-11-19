@@ -77,3 +77,9 @@ export interface GenerateMemeResponse {
   error?: string;
   meme?: string;
 }
+
+export interface AgentDataResponse {
+  name: string;
+  description: string;
+  image: string;
+}
