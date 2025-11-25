@@ -29,6 +29,7 @@ export interface ChatInput {
     agentName: string;
     chatId: string;
     isGroupChat: boolean;
+    extraContext?: string;
     currency: 'USDC' | 'MAGIC' | 'MIO' | 'SMOL';
 }
 
